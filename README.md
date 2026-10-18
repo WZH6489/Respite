@@ -158,7 +158,7 @@ Respite/
 - Gamified interventions and streaks
 - Physical intervention methods
 - Support for macOS and iPadOS
-- Browser extension to block short-form video such as YouTube Shorts (from the original proposal)
+- Browser extension to block short-form video such as YouTube Shorts
 
 ---
 
