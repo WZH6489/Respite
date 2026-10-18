@@ -1,53 +1,66 @@
 # 🌿 Respite
 
-**Goal:** Help people build healthier relationships with their phones by making screen time visible and interrupting mindless usage at the right moment.
+**Goal:** Help people reclaim their time from compulsive scrolling with an app that doesn't just lock apps, but helps you pause, reset, and return with intention.
 
-**Method:** Use Apple's Screen Time APIs (Family Controls, Device Activity) to track app usage, surface it in a clear dashboard, and trigger gentle interventions when usage patterns drift.
+**Method:** Combine Apple's Screen Time APIs with short, low-friction interventions (intent check-ins, breathing, quick puzzles) that create a boundary at the moment of impulse, then reinforce better habits with focus sessions, reflections, and behavior insights.
 
-**Deliverables:** A native iOS app written in Swift with a usage dashboard, configurable interventions, a Family Controls view with weekly usage statistics, a live study widget, and Shortcuts integration.
+**Deliverables:** A native iOS app built entirely in Swift with smart app/category/site blocking, an intervention system, Pomodoro-style focus sessions with Live Activities, a behavior insights dashboard, and daily reflections, all wrapped in a calm Liquid Glass interface.
 
-An iOS digital wellness app built in **Swift**, originally developed as part of **StormForge 2026** (SFU Surge) from January to April 2026 by a team of four with industry mentors.
+Developed by **Team 7** at **StormForge 2026** (SFU Surge) from January to April 2026: a team of four, selected from a competitive pool of SFU student applicants, working under the guidance of industry mentors to design and complete the project within four months.
+
+> App Store release was pending approval at the time of the StormForge showcase.
 
 ---
 
 # 🎯 Overview
 
-Most phone-time tools only report numbers after the fact. Respite aims to be more active: it shows how time is actually spent, then steps in with interventions that help the user pause, reflect, or switch to something more intentional.
+In a hyper-connected world, finding focus and staying organized is harder than ever. We're constantly juggling daily tasks, managing screen time, and bouncing between a cluttered mess of different apps just to keep up. The result is fragmented attention, lost focus, and the constant stress of digital overload.
 
-Respite focuses on:
+We realized we were scrolling far more than we intended, even when we wanted to focus, study, or rest. So we built Respite: instead of endless scrolling, it creates a quick boundary and redirects you into short interventions that make it easier to regain control.
 
-- **Awareness**: a dashboard that summarizes daily and weekly device usage.
-- **Intervention**: configurable nudges that interrupt unwanted usage patterns.
-- **Support**: a Family Controls view with weekly usage statistics for parents or guardians.
-- **Focus**: a live widget for study sessions.
-- **Automation**: Shortcuts support through an App Intent, so Respite can fit into existing routines.
+Respite is a calming, easy-to-use iOS app that helps you manage your digital habits. You can block noisy apps, redirect your attention, track your screen time, and find your focus, all from your device. It's designed for anyone who wants to reclaim their time.
 
 ---
 
-# ✨ Features
+# 🔄 How It Works
+
+1. **Set your boundaries.** Choose which apps, categories, and sites to block, and configure focus sessions.
+2. **Intercept the impulse.** When you open a blocked app, Respite asks you to pause and check in: why are you opening this, and what will you do after?
+3. **Recover and continue intentionally.** Complete a short intervention (breathing exercise, math challenge, tile puzzle, intent check) to unlock controlled access.
+4. **Build momentum.** Daily reflections, streaks, and weekly insights show your progress and reinforce the habit.
+
+---
+
+# ✨ Core Features
 
 | Feature | Description |
 |---|---|
-| Usage dashboard | Daily and weekly screen-time summaries with formatted, readable stats |
-| Interventions | Configurable prompts that interrupt usage before it turns into a habit loop |
-| Settings | User-controlled intervention behavior and app preferences |
-| Family Controls | Weekly usage statistics display for supervised accounts |
-| Study Live Widget | Live widget that tracks study sessions from the home or lock screen |
-| Shortcuts integration | `ForegroundContinuableIntent` support so Shortcuts automations can open and continue inside the app |
+| **Smart Scroll Blocking** | App, category, and site blocking with an **Intent Gate** (check-in before opening) and a **Daily Limit** (pause plus extra time) |
+| **Intervention System** | Fast recovery activities that unlock controlled access and build healthier habits |
+| **Focus Sessions + Fullscreen Focus Mode** | Pomodoro-style timer with presets (25/5, 50/10, 90/15) and custom plans, persistent runtime, and synced Live Activity support |
+| **Behavior Insights Dashboard** | Real-time metrics including time saved, momentum streak, recovery score, focus quality, achievements, and weekly insights |
+| **Reflections + Progress Archive** | Daily reflection prompts, saved history with edit and delete, and weekly reflection intelligence to track behavior patterns |
+| **Apple Integration** | Screen Time, HealthKit, WeatherKit, Live Activities, and Shortcuts support through App Intents |
 
 ---
 
-# 🏗️ Repository Structure
+# 🎨 Design
 
-```
-Respite-3.0/
-├── Respite 3.0/                          # Main app target (SwiftUI views, logic, assets)
-├── Respite 3.0.xcodeproj/                # Xcode project
-├── StudyLiveWidget/                      # Widget extension for live study sessions
-├── DeviceActivityReportExtension-Info.plist   # Device Activity report extension config
-├── Respite copy.xcodeproj/               # Legacy project workspace (kept for history)
-└── .gitignore
-```
+Respite's UI is intentionally designed to de-escalate compulsive scrolling: a calm visual language, clear hierarchy, and low-friction interactions that help users pause, reset, and make deliberate choices.
+
+**Design principles**
+
+- **Simplicity:** low-friction flows, consistent card patterns, and clear primary actions so users can complete tasks in 1-2 taps.
+- **Balance:** calm visuals combined with structured behavior controls, so the app feels supportive while still enforcing limits.
+- **Focus:** high-priority information is surfaced first, secondary details are progressively disclosed, and interruption screens are optimized for fast, intentional decisions.
+
+**Design system**
+
+- Liquid Glass UI
+- Time-aware background that shifts with time and weather context
+- Relaxed, custom color language chosen specifically to be calming
+- Consistent UI across the app
+- Emphasis-driven layout that reduces clutter
 
 ---
 
@@ -56,10 +69,26 @@ Respite-3.0/
 - Swift
 - SwiftUI
 - Xcode
-- Family Controls
-- Device Activity (Screen Time API)
-- WidgetKit
+- Liquid Glass
+- Screen Time (Family Controls, Device Activity)
+- HealthKit
+- WeatherKit
+- Live Activities and WidgetKit
 - App Intents / Shortcuts
+
+---
+
+# 🏗️ Repository Structure
+
+```
+Respite/
+├── Respite 3.0/                               # Main app target (views, logic, assets)
+├── Respite 3.0.xcodeproj/                     # Xcode project
+├── StudyLiveWidget/                           # Widget and Live Activity extension
+├── DeviceActivityReportExtension-Info.plist   # Device Activity report extension config
+├── Respite copy.xcodeproj/                    # Earlier project workspace (kept for history)
+└── LICENSE
+```
 
 ---
 
@@ -82,7 +111,7 @@ Respite-3.0/
 3. Select the **Respite 3.0** scheme and set your own **Team** under *Signing & Capabilities* for the app and each extension target.
 4. Make sure the **Family Controls** capability is enabled for the app and extensions.
 5. Build and run on a connected iPhone.
-6. When prompted, grant Screen Time access so the dashboard and interventions can work.
+6. When prompted, grant Screen Time access so blocking and insights can work.
 
 > **Note:** Apple gates Family Controls behind an entitlement. You may need to request it from Apple before the app works on your own account.
 
@@ -90,11 +119,9 @@ Respite-3.0/
 
 # 🔭 Future Work
 
-- Smarter, context-aware interventions
-- Longer-term trends and goal setting
-- Expanded widgets and lock screen support
-- More Shortcuts actions
-- Accessibility and localization
+- Gamified interventions and streaks
+- Physical intervention methods
+- Support for macOS and iPadOS
 
 ---
 
