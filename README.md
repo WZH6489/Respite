@@ -120,10 +120,9 @@ Respite's UI is intentionally designed to de-escalate compulsive scrolling: a ca
 Respite/
 ├── Respite 3.0/                               # Main app target (views, logic, assets)
 ├── Respite 3.0.xcodeproj/                     # Xcode project
-├── RespiteFocusKit/                           # Shared focus session logic
-├── RespiteFocusLiveActivity/                  # Live Activity extension for focus sessions
-├── DeviceActivityReportExtension/             # Screen Time (Device Activity) report extension
+├── StudyLiveWidget/                           # Widget and Live Activity extension
 ├── DeviceActivityReportExtension-Info.plist   # Device Activity report extension config
+├── Respite copy.xcodeproj/                    # Earlier project workspace (kept for history)
 └── LICENSE
 ```
 
@@ -159,7 +158,7 @@ Respite/
 - Gamified interventions and streaks
 - Physical intervention methods
 - Support for macOS and iPadOS
-- Browser extension to block short-form video such as YouTube Shorts (from the original proposal)
+- Browser extension to block short-form video such as YouTube Shorts
 
 ---
 
