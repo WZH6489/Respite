@@ -120,9 +120,10 @@ Respite's UI is intentionally designed to de-escalate compulsive scrolling: a ca
 Respite/
 ├── Respite 3.0/                               # Main app target (views, logic, assets)
 ├── Respite 3.0.xcodeproj/                     # Xcode project
-├── StudyLiveWidget/                           # Widget and Live Activity extension
+├── RespiteFocusKit/                           # Shared focus session logic
+├── RespiteFocusLiveActivity/                  # Live Activity extension for focus sessions
+├── DeviceActivityReportExtension/             # Screen Time (Device Activity) report extension
 ├── DeviceActivityReportExtension-Info.plist   # Device Activity report extension config
-├── Respite copy.xcodeproj/                    # Earlier project workspace (kept for history)
 └── LICENSE
 ```
 
@@ -140,8 +141,8 @@ Respite/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/WZH6489/Respite-3.0.git
-   cd Respite-3.0
+   git clone https://github.com/WZH6489/Respite.git
+   cd Respite
    ```
 2. Open `Respite 3.0.xcodeproj` in Xcode.
 3. Select the **Respite 3.0** scheme and set your own **Team** under *Signing & Capabilities* for the app and each extension target.
@@ -158,7 +159,7 @@ Respite/
 - Gamified interventions and streaks
 - Physical intervention methods
 - Support for macOS and iPadOS
-- Browser extension to block short-form video such as YouTube Shorts
+- Browser extension to block short-form video such as YouTube Shorts (from the original proposal)
 
 ---
 
