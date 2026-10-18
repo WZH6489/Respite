@@ -332,7 +332,7 @@ struct TikTokBreathGateView: View {
         Task { @MainActor in
             try? await Task.sleep(for: .milliseconds(350))
             if let url = URL(string: "tiktok://") {
-                UIApplication.shared.open(url)
+                await UIApplication.shared.open(url)
             }
         }
     }

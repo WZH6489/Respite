@@ -11,6 +11,8 @@
 		E90100022F67407000E9FBC1 /* DeviceActivityMonitorExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E90100062F67407000E9FBC1 /* DeviceActivityMonitorExtension.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E90100032F67407000E9FBC1 /* ShieldConfigurationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E90100072F67407000E9FBC1 /* ShieldConfigurationExtension.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E90100042F67407000E9FBC1 /* ShieldActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E90100082F67407000E9FBC1 /* ShieldActionExtension.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A2F010032F67407000E9FBC0 /* RespiteFocusLiveActivity.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A2F010002F67407000E9FBC0 /* RespiteFocusLiveActivity.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A2F010042F67407000E9FBC0 /* RespiteFocusLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F010012F67407000E9FBC0 /* RespiteFocusLiveActivity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,13 @@
 			remoteGlobalIDString = E901000E2F67407000E9FBC1;
 			remoteInfo = ShieldActionExtension;
 		};
+		A2F0100A2F67407000E9FBC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26F650C22F67407000E9FBC1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A2F010052F67407000E9FBC0;
+			remoteInfo = RespiteFocusLiveActivity;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +64,7 @@
 				E90100022F67407000E9FBC1 /* DeviceActivityMonitorExtension.appex in Embed App Extensions */,
 				E90100032F67407000E9FBC1 /* ShieldConfigurationExtension.appex in Embed App Extensions */,
 				E90100042F67407000E9FBC1 /* ShieldActionExtension.appex in Embed App Extensions */,
+				A2F010032F67407000E9FBC0 /* RespiteFocusLiveActivity.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,6 +77,8 @@
 		E90100062F67407000E9FBC1 /* DeviceActivityMonitorExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DeviceActivityMonitorExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E90100072F67407000E9FBC1 /* ShieldConfigurationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShieldConfigurationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E90100082F67407000E9FBC1 /* ShieldActionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShieldActionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2F010002F67407000E9FBC0 /* RespiteFocusLiveActivity.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RespiteFocusLiveActivity.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2F010012F67407000E9FBC0 /* RespiteFocusLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespiteFocusLiveActivity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -78,11 +90,27 @@
 			);
 			target = 501D870E41296815F817F615 /* DeviceActivityReportExtension */;
 		};
+		BB110003AACCDD0011223344 /* Exceptions for "Respite 3.0" folder in "Respite 3.0" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				DeviceActivityMonitorExtension/RegulationMonitorSupport.swift,
+				DeviceActivityMonitorExtension/RespiteDeviceActivityMonitor.swift,
+				DeviceActivityReportExtension/ActivityBreakdownReport.swift,
+				DeviceActivityReportExtension/ActivityBreakdownView.swift,
+				DeviceActivityReportExtension/DeviceActivityReportExtensionMain.swift,
+				ShieldActionExtension/RespiteShieldActionExtension.swift,
+				ShieldConfigurationExtension/RespiteShieldConfigurationExtension.swift,
+			);
+			target = 26F650C92F67407000E9FBC1 /* Respite 3.0 */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		26F650CC2F67407000E9FBC1 /* Respite 3.0 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BB110003AACCDD0011223344 /* Exceptions for "Respite 3.0" folder in "Respite 3.0" target */,
+			);
 			path = "Respite 3.0";
 			sourceTree = "<group>";
 		};
@@ -132,6 +160,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A2F010072F67407000E9FBC0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -140,6 +175,7 @@
 			children = (
 				26F650CC2F67407000E9FBC1 /* Respite 3.0 */,
 				BB110001AACCDD0011223344 /* DeviceActivityReportExtension */,
+				A2F010092F67407000E9FBC0 /* RespiteFocusLiveActivity */,
 				26F650CB2F67407000E9FBC1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -152,8 +188,17 @@
 				E90100062F67407000E9FBC1 /* DeviceActivityMonitorExtension.appex */,
 				E90100072F67407000E9FBC1 /* ShieldConfigurationExtension.appex */,
 				E90100082F67407000E9FBC1 /* ShieldActionExtension.appex */,
+				A2F010002F67407000E9FBC0 /* RespiteFocusLiveActivity.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A2F010092F67407000E9FBC0 /* RespiteFocusLiveActivity */ = {
+			isa = PBXGroup;
+			children = (
+				A2F010012F67407000E9FBC0 /* RespiteFocusLiveActivity.swift */,
+			);
+			path = RespiteFocusLiveActivity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,17 +220,38 @@
 				E90100232F67407000E9FBC1 /* PBXTargetDependency */,
 				E90100252F67407000E9FBC1 /* PBXTargetDependency */,
 				E90100272F67407000E9FBC1 /* PBXTargetDependency */,
+				A2F0100B2F67407000E9FBC0 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				26F650CC2F67407000E9FBC1 /* Respite 3.0 */,
-				BB110001AACCDD0011223344 /* DeviceActivityReportExtension */,
 			);
 			name = "Respite 3.0";
 			packageProductDependencies = (
+				A2F011002F67407000E9FBC0 /* RespiteFocusKit */,
 			);
 			productName = "Respite 3.0";
 			productReference = 26F650CA2F67407000E9FBC1 /* Respite 3.0.app */;
 			productType = "com.apple.product-type.application";
+		};
+		A2F010052F67407000E9FBC0 /* RespiteFocusLiveActivity */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2F0100C2F67407000E9FBC0 /* Build configuration list for PBXNativeTarget "RespiteFocusLiveActivity" */;
+			buildPhases = (
+				A2F010062F67407000E9FBC0 /* Sources */,
+				A2F010072F67407000E9FBC0 /* Frameworks */,
+				A2F010082F67407000E9FBC0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RespiteFocusLiveActivity;
+			packageProductDependencies = (
+				A2F011012F67407000E9FBC0 /* RespiteFocusKit */,
+			);
+			productName = RespiteFocusLiveActivity;
+			productReference = A2F010002F67407000E9FBC0 /* RespiteFocusLiveActivity.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		501D870E41296815F817F615 /* DeviceActivityReportExtension */ = {
 			isa = PBXNativeTarget;
@@ -291,6 +357,9 @@
 					E901000E2F67407000E9FBC1 = {
 						CreatedOnToolsVersion = 26.3;
 					};
+					A2F010052F67407000E9FBC0 = {
+						CreatedOnToolsVersion = 26.3;
+					};
 				};
 			};
 			buildConfigurationList = 26F650C52F67407000E9FBC1 /* Build configuration list for PBXProject "Respite 3.0" */;
@@ -306,12 +375,16 @@
 			productRefGroup = 26F650CB2F67407000E9FBC1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
+			packageReferences = (
+				A2F0100F2F67407000E9FBC0 /* XCLocalSwiftPackageReference "RespiteFocusKit" */,
+			);
 			targets = (
 				26F650C92F67407000E9FBC1 /* Respite 3.0 */,
 				501D870E41296815F817F615 /* DeviceActivityReportExtension */,
 				E901000C2F67407000E9FBC1 /* DeviceActivityMonitorExtension */,
 				E901000D2F67407000E9FBC1 /* ShieldConfigurationExtension */,
 				E901000E2F67407000E9FBC1 /* ShieldActionExtension */,
+				A2F010052F67407000E9FBC0 /* RespiteFocusLiveActivity */,
 			);
 		};
 /* End PBXProject section */
@@ -346,6 +419,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E90200062F67407000E9FBC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2F010082F67407000E9FBC0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -390,6 +470,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A2F010062F67407000E9FBC0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2F010042F67407000E9FBC0 /* RespiteFocusLiveActivity.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -412,6 +500,11 @@
 			isa = PBXTargetDependency;
 			target = E901000E2F67407000E9FBC1 /* ShieldActionExtension */;
 			targetProxy = E90100282F67407000E9FBC1 /* PBXContainerItemProxy */;
+		};
+		A2F0100B2F67407000E9FBC0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A2F010052F67407000E9FBC0 /* RespiteFocusLiveActivity */;
+			targetProxy = A2F0100A2F67407000E9FBC0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -444,8 +537,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Debug;
-		};
 			name = Debug;
 		};
 		26F650D32F67407100E9FBC1 /* Debug */ = {
@@ -581,6 +672,8 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleURLTypes = "{\n    CFBundleTypeRole = Editor;\n    CFBundleURLName = \"com.stormforge.Respite.regulate\";\n    CFBundleURLSchemes =     (\n        regulate\n    );\n}";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -627,6 +720,8 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleURLTypes = "{\n    CFBundleTypeRole = Editor;\n    CFBundleURLName = \"com.stormforge.Respite.regulate\";\n    CFBundleURLSchemes =     (\n        regulate\n    );\n}";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -687,8 +782,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
-		};
 			name = Release;
 		};
 		E90300182F67407000E9FBC1 /* Debug */ = {
@@ -871,6 +964,66 @@
 			};
 			name = Release;
 		};
+		A2F0100D2F67407000E9FBC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = RespiteFocusLiveActivity/RespiteFocusLiveActivity.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TSH5D7226K;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Respite Focus";
+				INFOPLIST_KEY_NSExtensionPointIdentifier = "com.apple.widgetkit-extension";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.stormforge.Respite-3-0.RespiteFocusLiveActivity";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = appex;
+			};
+			name = Debug;
+		};
+		A2F0100E2F67407000E9FBC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = RespiteFocusLiveActivity/RespiteFocusLiveActivity.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TSH5D7226K;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Respite Focus";
+				INFOPLIST_KEY_NSExtensionPointIdentifier = "com.apple.widgetkit-extension";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.stormforge.Respite-3-0.RespiteFocusLiveActivity";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = appex;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -928,7 +1081,36 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		A2F0100C2F67407000E9FBC0 /* Build configuration list for PBXNativeTarget "RespiteFocusLiveActivity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2F0100D2F67407000E9FBC0 /* Debug */,
+				A2F0100E2F67407000E9FBC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		A2F0100F2F67407000E9FBC0 /* XCLocalSwiftPackageReference "RespiteFocusKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = RespiteFocusKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A2F011002F67407000E9FBC0 /* RespiteFocusKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A2F0100F2F67407000E9FBC0 /* XCLocalSwiftPackageReference "RespiteFocusKit" */;
+			productName = RespiteFocusKit;
+		};
+		A2F011012F67407000E9FBC0 /* RespiteFocusKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A2F0100F2F67407000E9FBC0 /* XCLocalSwiftPackageReference "RespiteFocusKit" */;
+			productName = RespiteFocusKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 26F650C22F67407000E9FBC1 /* Project object */;
 }

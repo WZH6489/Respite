@@ -33,6 +33,30 @@ struct RunTikTokBreathingGateIntent: AppIntent {
     }
 }
 
+/// Siri / App Shortcut entry that always continues to TikTok after the gate (no Shortcuts parameter UI).
+@available(iOS 26.0, *)
+struct RunTikTokBreathingGateThenOpenTikTokIntent: AppIntent {
+    static var title: LocalizedStringResource = "Calm breathing then TikTok"
+    static var description = IntentDescription(
+        "Opens Respite for the breathing exercise, then offers to open TikTok when you finish—same as the shortcut with “Open TikTok when done” turned on."
+    )
+
+    static let supportedModes: IntentModes = [.background, .foreground(.dynamic)]
+
+    @MainActor
+    func perform() async throws -> some IntentResult {
+        if RegulationSettingsStore().isTikTokHandoffSuppressActive {
+            return .result()
+        }
+        do {
+            try await continueInForeground(alwaysConfirm: false)
+        } catch {
+        }
+        await RespiteShortcutCoordinator.shared.runBreathingGateForShortcut(openTikTokWhenDone: true)
+        return .result()
+    }
+}
+
 /// Shortcuts / Personal Automation can branch on this so “When TikTok opens” does not reopen Respite right after a handoff from Respite.
 @available(iOS 26.0, *)
 struct IsTikTokHandoffSuppressActiveIntent: AppIntent {
@@ -52,34 +76,33 @@ struct IsTikTokHandoffSuppressActiveIntent: AppIntent {
 
 @available(iOS 26.0, *)
 struct RespiteAppShortcuts: AppShortcutsProvider {
+    @AppShortcutsBuilder
     static var appShortcuts: [AppShortcut] {
-        [
-            AppShortcut(
-                intent: RunTikTokBreathingGateIntent(openTikTokWhenDone: true),
-                phrases: [
-                    "Calm breathing then TikTok in \(.applicationName)",
-                    "Pause TikTok with breathing in \(.applicationName)",
-                ],
-                shortTitle: "Calm breathing → TikTok",
-                systemImageName: "wind"
-            ),
-            AppShortcut(
-                intent: RunTikTokBreathingGateIntent(),
-                phrases: [
-                    "TikTok breathing in \(.applicationName)",
-                    "Run TikTok breathing gate in \(.applicationName)",
-                ],
-                shortTitle: "TikTok breathing gate",
-                systemImageName: "wind"
-            ),
-            AppShortcut(
-                intent: IsTikTokHandoffSuppressActiveIntent(),
-                phrases: [
-                    "TikTok handoff suppress in \(.applicationName)",
-                ],
-                shortTitle: "TikTok handoff suppress?",
-                systemImageName: "arrow.triangle.2.circlepath"
-            ),
-        ]
+        AppShortcut(
+            intent: RunTikTokBreathingGateThenOpenTikTokIntent(),
+            phrases: [
+                "Calm breathing then TikTok in \(.applicationName)",
+                "Pause TikTok with breathing in \(.applicationName)",
+            ],
+            shortTitle: "Calm breathing → TikTok",
+            systemImageName: "wind"
+        )
+        AppShortcut(
+            intent: RunTikTokBreathingGateIntent(),
+            phrases: [
+                "TikTok breathing in \(.applicationName)",
+                "Run TikTok breathing gate in \(.applicationName)",
+            ],
+            shortTitle: "TikTok breathing gate",
+            systemImageName: "wind"
+        )
+        AppShortcut(
+            intent: IsTikTokHandoffSuppressActiveIntent(),
+            phrases: [
+                "TikTok handoff suppress in \(.applicationName)",
+            ],
+            shortTitle: "TikTok handoff suppress?",
+            systemImageName: "arrow.triangle.2.circlepath"
+        )
     }
 }

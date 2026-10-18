@@ -1,6 +1,7 @@
 import DeviceActivity
 import FamilyControls
 import SwiftUI
+import UIKit
 
 struct SettingsView: View {
     @State private var selection = FamilyActivitySelection()
@@ -16,6 +17,8 @@ struct SettingsView: View {
     @State private var authorizationStatus = AuthorizationCenter.shared.authorizationStatus
     @State private var scheduleErrorMessage: String?
     @State private var showTikTokShortcutsSetup = false
+    @State private var isRequestingHealthKit = false
+    @StateObject private var mindfulness = MindfulnessHealthStore.shared
 
     private let settings = RegulationSettingsStore()
 
@@ -178,6 +181,15 @@ struct SettingsView: View {
                 }
 
                 Section {
+                    healthKitRow
+                } header: {
+                    Text("Apple Health")
+                } footer: {
+                    Text("Respite will log each completed breathwork session as a Mindful Minutes entry in the Health app. Respite never reads data from Health.")
+                        .font(.caption)
+                }
+
+                Section {
                     Button {
                         showTikTokShortcutsSetup = true
                     } label: {
@@ -224,6 +236,7 @@ struct SettingsView: View {
             .navigationTitle("Settings")
             .task {
                 loadFromStore()
+                mindfulness.refreshAuthState()
             }
             .onReceive(AuthorizationCenter.shared.$authorizationStatus) { authorizationStatus = $0 }
             .onChange(of: focusedTimingField) { oldField, newField in
@@ -249,6 +262,101 @@ struct SettingsView: View {
                 TikTokShortcutsSetupSheet()
             }
         }
+    }
+
+    @ViewBuilder
+    private var healthKitRow: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .firstTextBaseline) {
+                Label("HealthKit mindfulness", systemImage: "heart.text.square")
+                    .font(.subheadline.weight(.semibold))
+                Spacer()
+                healthKitStatusBadge
+            }
+
+            Text(healthKitHelpText)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            healthKitActionButton
+        }
+        .padding(.vertical, 4)
+    }
+
+    private var healthKitStatusBadge: some View {
+        let (text, color): (String, Color) = {
+            switch mindfulness.authState {
+            case .authorized:     return ("Enabled", .green)
+            case .denied:         return ("Denied", .orange)
+            case .notDetermined:  return ("Not enabled", .secondary)
+            case .unavailable:    return ("Unavailable", .secondary)
+            case .unknown:        return ("–", .secondary)
+            }
+        }()
+        return Text(text)
+            .font(.caption.weight(.semibold))
+            .foregroundStyle(color)
+    }
+
+    private var healthKitHelpText: String {
+        switch mindfulness.authState {
+        case .authorized:
+            return "Respite will log finished breathwork sessions to Apple Health as Mindful Minutes."
+        case .denied:
+            return "Sharing is turned off. Open Settings > Health > Data Access & Devices > Respite to re-enable writing mindful sessions."
+        case .notDetermined, .unknown:
+            return "Grant access so Respite can log each completed breathing session as a mindful minute in Apple Health."
+        case .unavailable:
+            return "HealthKit isn't available on this device."
+        }
+    }
+
+    @ViewBuilder
+    private var healthKitActionButton: some View {
+        switch mindfulness.authState {
+        case .notDetermined, .unknown:
+            Button {
+                Task { await requestHealthKit() }
+            } label: {
+                if isRequestingHealthKit {
+                    ProgressView()
+                } else {
+                    Text("Enable HealthKit mindfulness")
+                        .frame(maxWidth: .infinity)
+                }
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(isRequestingHealthKit || !mindfulness.isAvailable)
+
+        case .denied:
+            Button {
+                if let url = URL(string: UIApplication.openSettingsURLString) {
+                    Task { @MainActor in
+                        await UIApplication.shared.open(url)
+                    }
+                }
+            } label: {
+                Text("Open Settings")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+
+        case .authorized:
+            if let message = mindfulness.lastErrorMessage {
+                Text(message)
+                    .font(.caption)
+                    .foregroundStyle(.red)
+            }
+
+        case .unavailable:
+            EmptyView()
+        }
+    }
+
+    private func requestHealthKit() async {
+        isRequestingHealthKit = true
+        await mindfulness.requestAuthorization()
+        isRequestingHealthKit = false
     }
 
     private func loadFromStore() {

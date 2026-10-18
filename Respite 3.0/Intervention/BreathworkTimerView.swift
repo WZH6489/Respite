@@ -17,6 +17,7 @@ struct BreathworkTimerView: View {
     @State private var elapsedInPhase: Int = 0
     @State private var didCallRegulationComplete = false
     @State private var showTikTokNudge = false
+    @State private var sessionStartDate: Date?
 
     private let totalCycles = 3
 
@@ -288,11 +289,13 @@ struct BreathworkTimerView: View {
 
     private func startSession() {
         cyclesCompleted = 0
+        sessionStartDate = Date()
         startPhase(.inhale)
     }
 
     private func resetSession() {
         cyclesCompleted = 0
+        sessionStartDate = nil
         withAnimation { breathPhase = .ready }
         ringScale = 0.6
         ringOpacity = 0.4
@@ -339,6 +342,7 @@ struct BreathworkTimerView: View {
                 }
                 ringScale = 0.6
                 ringOpacity = 0.4
+                logMindfulSessionToHealth()
                 if isRegulationSession, !didCallRegulationComplete {
                     didCallRegulationComplete = true
                     onRegulationComplete?()
@@ -357,12 +361,21 @@ struct BreathworkTimerView: View {
         timer = nil
     }
 
+    private func logMindfulSessionToHealth() {
+        let start = sessionStartDate ?? Date().addingTimeInterval(-Double(totalCycles * 19))
+        let end = Date()
+        sessionStartDate = nil
+        Task { @MainActor in
+            await MindfulnessHealthStore.shared.logMindfulSession(start: start, end: end)
+        }
+    }
+
     private func openTikTokAfterDismissal() {
         Task { @MainActor in
             try? await Task.sleep(for: .milliseconds(350))
             if let url = URL(string: "tiktok://") {
                 RegulationSettingsStore().armTikTokHandoffSuppressWindow()
-                UIApplication.shared.open(url)
+                await UIApplication.shared.open(url)
             }
         }
     }

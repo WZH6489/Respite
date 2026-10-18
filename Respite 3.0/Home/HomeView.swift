@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     @ObservedObject private var stats = RespiteStatsStore.shared
+    @ObservedObject private var focusStore = FocusSessionStore.shared
     @Environment(\.scenePhase) private var scenePhase
     @AppStorage("respite.home.tiktokShortcutsSetupDismissed") private var tiktokShortcutsSetupDismissed = false
     @State private var showTikTokShortcutsSetup = false
@@ -25,6 +26,8 @@ struct HomeView: View {
                     if !tiktokShortcutsSetupDismissed {
                         tiktokShortcutsCallout
                     }
+
+                    FocusDashboardSummaryCard()
 
                     VStack(spacing: 12) {
                         summaryRow(
@@ -61,10 +64,12 @@ struct HomeView: View {
         .onChange(of: scenePhase) { _, phase in
             if phase == .active {
                 stats.reloadFromDisk()
+                focusStore.reloadFromDisk()
             }
         }
         .onAppear {
             stats.reloadFromDisk()
+            focusStore.reloadFromDisk()
         }
         .sheet(isPresented: $showTikTokShortcutsSetup) {
             TikTokShortcutsSetupSheet()
@@ -150,4 +155,5 @@ struct HomeView: View {
         }
         return "\(h) hr \(rem) min"
     }
+
 }

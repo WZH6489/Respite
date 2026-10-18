@@ -307,7 +307,7 @@ struct PuzzleBreakView: View {
             try? await Task.sleep(for: .milliseconds(350))
             if let url = URL(string: "tiktok://") {
                 RegulationSettingsStore().armTikTokHandoffSuppressWindow()
-                UIApplication.shared.open(url)
+                await UIApplication.shared.open(url)
             }
         }
     }

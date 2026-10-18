@@ -15,6 +15,7 @@ struct Respite_3_0App: App {
         WindowGroup {
             ContentView()
                 .environmentObject(interventions)
+                .environmentObject(FocusSessionStore.shared)
                 .onOpenURL { url in
                     RegulationURLHandler.handle(url, interventions: interventions)
                 }

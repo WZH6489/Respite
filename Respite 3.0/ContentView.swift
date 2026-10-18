@@ -42,6 +42,7 @@ struct ContentView: View {
                 evaluateIdleBreathingGate()
                 updateDailyWelcomeIfNeeded()
                 RespiteStatsStore.shared.reloadFromDisk()
+                FocusSessionStore.shared.reloadFromDisk()
             }
         }
         .onChange(of: interventions.regulationChallenge) { _, newValue in
