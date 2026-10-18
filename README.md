@@ -22,6 +22,42 @@ Respite is a calming, easy-to-use iOS app that helps you manage your digital hab
 
 ---
 
+# 🧠 Origins and Research
+
+**Premise:** Most existing apps tackle only one piece of the problem, either blocking apps or offering relaxation tools like meditation and puzzle games. We wanted to cover every facet of detoxing and adapt to each user's needs, so the proposal split the approach into three methods.
+
+| Method | Idea in the proposal | Where it lives in Respite |
+|---|---|---|
+| **Reactive** (block content and apps) | Interrupt mindless scrolling as it happens | Smart Scroll Blocking with Intent Gate and Daily Limit |
+| **Proactive** (track time and reflect) | Make users state their intent and earn access before scrolling | Intent check-ins, behavior insights dashboard, daily reflections |
+| **Restructure** (redirect to better activities) | Swap scrolling for calming or productive alternatives | Intervention System with breathing, math, and puzzle activities, plus the Wellness tab |
+
+**Bespoke ideas that shaped the design**
+
+- **Digital sunrise and sunset:** tie the experience to the user's local time so a session ends with a sense of closure. This became the time-aware background and the sunrise/sunset card on the home screen.
+- **Time-to-life converter:** turn abstract minutes into something meaningful. This became the "time saved" and "this pace, 1 year" cards.
+- **Silent achievements:** favor subtle, calm UI shifts over dopamine-spike badges and fireworks, which carried into Respite's calm design language.
+
+**Background**
+
+- "Brainrot" is shorthand for the mental dulling that can follow spending too much time on low-quality, unchallenging online content. Reported effects include feeling overwhelmed, emotional numbness, memory and decision-making trouble, and social withdrawal.
+- Phone distraction is a growing concern in education too: school districts across British Columbia have adopted codes of conduct limiting student phone use in classrooms.
+
+**Inspiration**
+
+- The **MINDSPACE** behavior-change framework (Messenger, Incentives, Norms, Defaults, Salience, Priming, Affect, Commitments, Ego), which guided how we nudge users toward better choices
+- **Art of Fauna**, a calm puzzle game that shaped the idea of a relaxing replacement for scrolling
+- **Rize**, a time-tracking app that inspired the insights dashboard
+
+**References**
+
+- [What Is Brainrot? (Healthline)](https://www.healthline.com/health/what-is-brainrot)
+- [Cellphones in Schools (Government of British Columbia)](https://www2.gov.bc.ca/gov/content/education-training/k-12/cellphones-in-schools)
+- [Tools of the Trade (The Decision Lab)](https://thedecisionlab.com/guide/tools-of-the-trade)
+- [Anti-Brainrot Apps (Digital Minimalist)](https://www.digitalminimalist.com/blog/anti-brainrot-apps)
+
+---
+
 # 🔄 How It Works
 
 1. **Set your boundaries.** Choose which apps, categories, and sites to block, and configure focus sessions.
@@ -122,6 +158,7 @@ Respite/
 - Gamified interventions and streaks
 - Physical intervention methods
 - Support for macOS and iPadOS
+- Browser extension to block short-form video such as YouTube Shorts (from the original proposal)
 
 ---
 
