@@ -1,4 +1,4 @@
-# 🌿 Respite 3.0
+# 🌿 Respite
 
 **Goal:** Help people build healthier relationships with their phones by making screen time visible and interrupting mindless usage at the right moment.
 
@@ -6,7 +6,7 @@
 
 **Deliverables:** A native iOS app written in Swift with a usage dashboard, configurable interventions, a Family Controls view with weekly usage statistics, a live study widget, and Shortcuts integration.
 
-An iOS digital wellness app built in **Swift**, originally developed as part of **StormForge 2026** (SFU Surge) from January to April 2026 by a team of four with industry mentors. This repository is the 3.0 iteration of the app.
+An iOS digital wellness app built in **Swift**, originally developed as part of **StormForge 2026** (SFU Surge) from January to April 2026 by a team of four with industry mentors.
 
 ---
 
@@ -14,7 +14,7 @@ An iOS digital wellness app built in **Swift**, originally developed as part of 
 
 Most phone-time tools only report numbers after the fact. Respite aims to be more active: it shows how time is actually spent, then steps in with interventions that help the user pause, reflect, or switch to something more intentional.
 
-Respite 3.0 focuses on:
+Respite focuses on:
 
 - **Awareness**: a dashboard that summarizes daily and weekly device usage.
 - **Intervention**: configurable nudges that interrupt unwanted usage patterns.
